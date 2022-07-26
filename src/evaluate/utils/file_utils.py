@@ -677,11 +677,8 @@ def cleanup_cache_files(cache_directory):
     if not current_cache_files:
         return 0
     logger.info(f"Listing files in {cache_directory}")
-    files_to_remove = []
-    for file in current_cache_files:
-        files_to_remove.append(file)
-    for file_path in files_to_remove:
+    for file_path in current_cache_files:
         logger.info(f"Removing {file_path}")
         os.remove(file_path)
-    return len(files_to_remove)
+    return len(current_cache_files)  # TODO: change this to delete per model cache as opposed to the entire results cache
 

@@ -198,7 +198,7 @@ class Evaluator(ABC):
             logger.warning(f"Loading cached computed results at {cache_file_name}")
             result_from_table = pa.Table.to_pydict(pq.read_table(cache_file_name))
             result = {k: v[0] for (k, v) in result_from_table.items()}
-            from evaluate.utils.file_utils import cleanup_cache_files
+            from evaluate.utils.file_utils import cleanup_cache_files  # TODO: remove this, debugging
             cleanup_cache_files(self.cache_dir)
             return result
 
